@@ -1,9 +1,9 @@
 # Slot Game Credit Checker
 
 ## Authors
-David Caballero Martínez
-Hugo Lobato Burgos
-Elliot Sundberg
+- David Caballero Martínez
+- Hugo Lobato Burgos
+- Elliot Sundberg
 
 ## About
 
