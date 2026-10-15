@@ -127,3 +127,6 @@ Apart from that, you can see a screenshot called `2026-10-15-193222_hyprshot.png
 This is a small automation project for testing credit balance changes using browser automation and OCR. The results depend on the accuracy of the text recognition and the game interface.
 
 Do not commit API keys or session tokens to the repository. If credentials have already been exposed, revoke or replace them before publishing the project.
+
+
+
