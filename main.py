@@ -34,11 +34,11 @@ def setup_browser(p):
     # 2. Inject all localStorage keys in a single evaluate call
     page.evaluate("""
         () => {
-            localStorage.setItem("session", '{"token":"ewogICJhbGciOiAiSFMyNTYiLAogICJ0eXAiOiAiSldUIgp9.ewogICJjcmVhdGVkQXQiOiAiMjAyNi0xMC0xNVQxNTo1NDoyOC40MDU5OTU4WiIsCiAgInVzZXJJZCI6ICI5MTJhZmIzNS1jZTZjLTRlOGMtOWY5Ni0xMzA2NmVlYzcwYzMiLAogICJsb2dpblNlc3Npb25JZCI6ICIyOTYxN2YwNi0yODdmLTQ2ZTctYTIwYy05NTNkNDU4NzI3ZWIiLAogICJqdXJpc2RpY3Rpb24iOiAiRGdvaiIKfQ.GOj1DNAR6ljpXS0O8Bs3e0qDnVJEt_-XlpaYezCZNaM","timeToLiveSeconds":1196.8677762,"isFirstLogin":false,"startTimestamp":1792079668615,"customerId":"912afb35-ce6c-4e8c-9f96-13066eec70c3","jurisdiction":"Dgoj","startReason":"Login","lastLoginDate":"2026-10-15T13:59:24.41Z"}');
-            localStorage.setItem("groupIbServerSession", '{"token":"3952f2f9-cf71-4de7-940f-8bd48a9561d4","type":"authenticated","expiry":"2026-10-15T13:07:33.602Z"}');
-            localStorage.setItem("awswaf_token_refresh_timestamp", '1792070644511');
+            localStorage.setItem("session", 'xxxxxx');
+            localStorage.setItem("groupIbServerSession", 'xxxxx');
+            localStorage.setItem("awswaf_token_refresh_timestamp", 'xxxxxx');
         }
-    """)
+    """) # These are example data, and should be changed by your actual session tokens from your browser sessions
 
     # 3. Reload to let the web app recognize the injected session
     page.goto("https://www.betsson.es/casino/tragaperras-slots/bubble-up?gameAction=play")
@@ -52,9 +52,9 @@ def get_credit_and_bet():
             files={"filename": file},
             data={
                 "apikey": api_key,
-                "language": "spa",  # Language code (e.g., 'eng', 'spa', 'fre')
+                "language": "spa",
                 "isOverlayRequired": False,
-                "OCREngine": 2,     # Engine 1 or 2 (Engine 2 works better for numbers/digits)
+                "OCREngine": 2,
             },
         )
 
@@ -88,8 +88,8 @@ if __name__ == "__main__":
         page.screenshot(path="credit.png", clip={"x":width*.17, "y": height*.73, "width": width*0.1, "height": height*.1})
         
 
-        api_url = "https://api.ocr.space/parse/image"
-        api_key = "K87405734488957"
+        api_url = os.getenv("OCR_API_URL")
+        api_key = os.getenv("OCR_API_KEY")
 
         credit, bet = get_credit_and_bet()
 
@@ -129,6 +129,7 @@ if __name__ == "__main__":
                         print("[-] LOSS FAILED.")
                         print(str(expected_credit) + "vs. " + str(actual_credit))
                 else:
+                    time.sleep(5)
                     numbers = re.findall(r"\d+(?:,\d+)?", parsed_text)
                     winning = float(numbers[0].replace(",", "."))
                     expected_credit = round(credit-bet+winning, 2)
