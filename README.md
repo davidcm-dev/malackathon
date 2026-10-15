@@ -1,5 +1,10 @@
 # Slot Game Credit Checker
 
+## Authors
+David Caballero Martínez
+Hugo Lobato Burgos
+Elliot Sundberg
+
 ## About
 
 This project is a Python script that automates a slot game in Firefox and checks if the credit balance changes correctly after each spin.
@@ -116,15 +121,6 @@ The script saves three screenshots in the project folder:
 These files are overwritten when new screenshots are taken.
 
 Apart from that, you can see a screenshot called `2026-10-15-193222_hyprshot.png` that shows the console output on a run we performed. The system first detects a loss correctly and checks the final balance is correct, then does the same for a win.
-
-## Known issues
-
-- The mouse coordinates are fixed, so the script may not work with different screen sizes.
-- It uses fixed delays, which may not be enough if the game loads slowly.
-- OCR can misread numbers or fail to detect them.
-- The script may keep running if it never detects a win.
-- The browser session can expire.
-- Network errors and unexpected game states are not fully handled.
 
 ## Notes
 
