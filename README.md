@@ -115,6 +115,8 @@ The script saves three screenshots in the project folder:
 
 These files are overwritten when new screenshots are taken.
 
+Apart from that, you can see a screenshot called `2026-10-15-193222_hyprshot.png` that shows the console output on a run we performed. The system first detects a loss correctly and checks the final balance is correct, then does the same for a win.
+
 ## Known issues
 
 - The mouse coordinates are fixed, so the script may not work with different screen sizes.
